@@ -7,11 +7,22 @@ const getFullName = (firstName, secondName) => {
 }
 
 const PresentationAndInput = (props) => {
+  const [text, setText] = useState('');
+
 
   return (
     <View>
       <Text>{props.greeting} {getFullName('Groovy', 'Goose')}</Text>
-      <TextInput style={styles.input}/>
+      <TextInput 
+      style={styles.input}
+      placeholder="Type here to translate!"
+      onChangeText={text => setText(text)}
+      // https://scriptverse.academy/tutorials/reactjs-defaultvalue-value.html
+      defaultValue={text}
+      />
+      <Text>
+        {text}
+      </Text>
     </View>
   ) 
 }
