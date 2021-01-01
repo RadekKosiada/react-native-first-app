@@ -12,17 +12,60 @@ import styles from './components/styles';
 
 const Stack = createStackNavigator();
 
+const HomeScreen = ({ navigation }) => {
+  return (
+    <View>
+    <Button
+
+      title="Go to Dominik's profile"
+      onPress={() =>
+        navigation.navigate('Profile', { name: 'Dominik' })
+      }
+    />
+     <Button
+     color="black"
+      style={styles.button}
+      title="Go to Counter"
+      onPress={() =>
+        navigation.navigate('Counter')
+      }
+    />
+     <Button
+      title="Go to Song"
+      onPress={() =>
+        navigation.navigate('Song')
+      }
+    />
+    </View>
+  );
+};
+
+const ProfileScreen = ({ navigation, route }) => {
+  return <Text>This is {route.params.name}'s profile</Text>;
+};
+
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+
+      <Stack.Screen
           name="Home"
-          component = {Counter}
-          options = {{ title: "Welcome" }}
-          />
+          component={HomeScreen}
+          options={{ title: 'Welcome' }}
+        />
+
         <Stack.Screen
+          name="Counter"
+          component = {Counter}
+          options = {{ title: "Counter" }}
+          />
+           <Stack.Screen
           name="Profile" 
+          component = {ProfileScreen}
+        />
+        <Stack.Screen
+          name="Song" 
           component = {Song}
         />
       </Stack.Navigator>
