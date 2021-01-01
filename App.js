@@ -1,52 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
-
-const getFullName = (firstName, secondName) => {
-  return firstName + ' ' + secondName;
-}
-
-const PresentationAndInput = (props) => {
-  const [text, setText] = useState('');
-
-
-  return (
-    <View>
-      <Text>{props.greeting} {getFullName('Groovy', 'Goose')}</Text>
-      <TextInput 
-      style={styles.input}
-      placeholder="Type here to translate!"
-      onChangeText={text => setText(text)}
-      // https://scriptverse.academy/tutorials/reactjs-defaultvalue-value.html
-      defaultValue={text}
-      />
-      <Text>
-        {text}
-      </Text>
-    </View>
-  ) 
-}
-
-const Song = (props) => {
-  //const[getter, setter] = useState(initialValue);
-  const[isPlayed, setIsPlayed] = useState(true);
-
-  return (
-    <View>
-      <Text>
-        This is a song {props.title}, and it's {isPlayed ? "being played" : "waiting on a playlist"}!
-      </Text>
-      <Button
-      //onPress is a prop
-        onPress={() => {
-          setIsPlayed(false);
-        }}
-        disabled={!isPlayed}
-        title={isPlayed ? "Play that song!" : "Mmm good vibes!"}
-      />
-    </View>
-  )
-}
+import { StyleSheet, Text, ScrollView, View, TextInput, Image, Button } from 'react-native';
+import Song from './components/Song';
+import PresentationAndInput from './components/PresentationAndInput';
+import styles from './components/styles';
 
 
 export default function App() {
@@ -65,23 +22,6 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderColor: 'black',
-    borderWidth: 1
-  },
-  input: {
-    height: 40,
-    width: 200,
-    borderColor: 'gray',
-    borderWidth: 1
-  }
-});
 
 
 // no index.html
